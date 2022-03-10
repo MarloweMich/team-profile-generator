@@ -1,0 +1,22 @@
+.jumbotron{
+    background-color: crimson;
+    text-align: center;
+    height: 20vh;
+}
+
+.jumbotron h1{
+    padding: 4%;
+}
+
+.card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 2%;
+}
+
+.card-holder{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
