@@ -1,3 +1,4 @@
+const cards = [];
 const manCards = function (manArray) {
     let card = '';
     for (let i=0; i<manArray.length; i++){
@@ -13,9 +14,8 @@ const manCards = function (manArray) {
         </ul>
       </div>`
     }
-    // cards.push(card)
-    // return cards;
-    return card;
+    cards.push(card)
+    return cards;
 }
 const engCards = function (engArray) {
     let card = '';
@@ -32,9 +32,8 @@ const engCards = function (engArray) {
         </ul>
       </div>`
     }
-    // cards.push(card)
-    // return cards;
-    return card;
+    cards.push(card)
+    return cards;
 }
 const intCards = function (intArray) {
     let card = '';
@@ -51,12 +50,11 @@ const intCards = function (intArray) {
         </ul>
       </div>`
     }
-    // cards.push(card)
-    // return cards;
-    return card;
+    cards.push(card)
+    return cards;
   }
 
 module.exports = manCards;
 module.exports = engCards;
 module.exports = intCards;
-// module.exports = cards;
+module.export = cards;

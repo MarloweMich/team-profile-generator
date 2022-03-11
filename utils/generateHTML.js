@@ -1,5 +1,3 @@
-// const cards = require('./Cards')
-
 const generateHTML = function(cards) {
 
     return `<!DOCTYPE html>
