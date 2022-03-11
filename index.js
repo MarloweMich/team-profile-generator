@@ -4,14 +4,16 @@ const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
-// const generateHTML = require('./utils/generateHTML')
-// const generateCards = require('./utils/Cards')
+const generateHTML = require('./utils/generateHTML')
+const manCards = require('./utils/Cards')
+const engCards = require('./utils/Cards')
+const intCards = require('./utils/Cards')
 
 //ARRAYS OF EMPLOYEES BY CATEGORY THAT EACH INDIVIDUAL ENTRY WILL BE PUSHED INTO
 const manArray = [];
 const engArray = [];
 const intArray = [];
-const cards = [];
+const cards  = [];
 
 //PROMPTS TO GET INFORMATION ON EMPLOYEES
 const EmployeeQuestions = [
@@ -119,121 +121,13 @@ async function generateEmployee() {
       return generateEmployee();
     } else {
         console.log(manArray, engArray, intArray);
-        manCards(manArray);
-        engCards(engArray);
-        intCards(intArray);
+        const mancard = manCards(manArray);
+        const engcard = engCards(engArray);
+        const intcard = intCards(intArray);
+        cards.push(mancard, engcard, intcard)
       return writeToFile(cards);
     }
   }
-}
-
-
-//MAMAKING CARDS
-const manCards = function (manArray) {
-    let card = '';
-    for (let i=0; i<manArray.length; i++){
-        card += `<div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h4 class="card-title">${manArray[i].name}</h4>
-          <h5>Manager</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${manArray[i].id}</li>
-          <li class="list-group-item">Email: <a href="mailto:${manArray[i].email}">${manArray[i].email}</a></li>
-          <li class="list-group-item">Office Number: ${manArray[i].officeNumber}</li>
-        </ul>
-      </div>`
-    }
-    cards.push(card)
-    return cards;
-}
-const engCards = function (engArray) {
-    let card = '';
-    for (let i=0; i<engArray.length; i++){
-        card += `<div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h4 class="card-title">${engArray[i].name}</h4>
-          <h5>Engineer</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${engArray[i].id}</li>
-          <li class="list-group-item">Email: <a href="mailto:${engArray[i].email}">${engArray[i].email}</a></li>
-          <li class="list-group-item">Github: <a href="https://github.com/${engArray[i].github}">${engArray[i].github}</a></li>
-        </ul>
-        
-      </div>`
-    }
-    cards.push(card)
-    return cards;
-}
-const intCards = function (intArray) {
-    let card = '';
-    for (let i=0; i<intArray.length; i++){
-        card += `<div class="card" style="width: 18rem;">
-        <div class="card-body">
-          <h4 class="card-title">${intArray[i].name}</h4>
-          <h5>Intern</h5>
-        </div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">ID: ${intArray[i].id}</li>
-          <li class="list-group-item">Email: <a href="mailto:${intArray[i].email}">${intArray[i].email}</a></li>
-          <li class="list-group-item">School: ${intArray[i].school}</li>
-        </ul>
-      </div>`
-    }
-    cards.push(card)
-    return cards;
-}
-
-//MAKING HTML
-const generateHTML = function(cards) {
-
-    return `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-        <link rel="stylesheet" href="./template.css">
-        <title>Team Roster</title>
-            <style>
-                .jumbotron{
-                    background-color:tomato;
-                    text-align: center;
-                    height: 20vh;
-                }
-                .jumbotron h1{
-                    padding: 4%;
-                }
-                .card{
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: center;
-                    margin: 2%;
-                }
-                .card-body{
-                background-color: aqua;
-                }
-                .card-holder{
-                    display: flex;
-                    justify-content: center;
-                    flex-wrap: wrap;
-                }
-            </style>
-    </head>
-    <body>
-        <div class="jumbotron jumbotron-fluid">
-            <div class="container">
-              <h1 class="display-4">My Team</h1>
-            </div>
-          </div>
-        <div class="card-holder">
-        ${cards}
-        </div>
-    </body>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
-    </html>`
 }
 
 //WRITING FILE
@@ -243,7 +137,6 @@ function writeToFile(cards) {
         console.log("HTML created")
     })
 }
-
 
 //INITIALIZATION FUNCTION
 const init = () => {

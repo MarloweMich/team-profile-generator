@@ -11,6 +11,30 @@ const generateHTML = function(cards) {
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
         <link rel="stylesheet" href="./template.css">
         <title>Team Roster</title>
+        <style>
+                 .jumbotron{
+                     background-color:tomato;
+                     text-align: center;
+                    height: 20vh;
+                }
+                .jumbotron h1{
+                    padding: 4%;
+                }
+                .card{
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: center;
+                    margin: 2%;
+                }
+                .card-body{
+                background-color: aqua;
+                }
+                .card-holder{
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                }
+            </style>
     </head>
     <body>
         <div class="jumbotron jumbotron-fluid">
@@ -26,4 +50,4 @@ const generateHTML = function(cards) {
     </html>`
 }
 
-module.exports = generateHTML();
+module.exports = generateHTML;

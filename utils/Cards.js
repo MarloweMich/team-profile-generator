@@ -13,6 +13,8 @@ const manCards = function (manArray) {
         </ul>
       </div>`
     }
+    // cards.push(card)
+    // return cards;
     return card;
 }
 const engCards = function (engArray) {
@@ -21,7 +23,7 @@ const engCards = function (engArray) {
         card += `<div class="card" style="width: 18rem;">
         <div class="card-body">
           <h4 class="card-title">${engArray[i].name}</h4>
-          <h5>Manager</h5>
+          <h5>Engineer</h5>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${engArray[i].id}</li>
@@ -30,6 +32,8 @@ const engCards = function (engArray) {
         </ul>
       </div>`
     }
+    // cards.push(card)
+    // return cards;
     return card;
 }
 const intCards = function (intArray) {
@@ -38,7 +42,7 @@ const intCards = function (intArray) {
         card += `<div class="card" style="width: 18rem;">
         <div class="card-body">
           <h4 class="card-title">${intArray[i].name}</h4>
-          <h5>Manager</h5>
+          <h5>Intern</h5>
         </div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item">ID: ${intArray[i].id}</li>
@@ -47,9 +51,12 @@ const intCards = function (intArray) {
         </ul>
       </div>`
     }
+    // cards.push(card)
+    // return cards;
     return card;
-}
+  }
 
-module.exports = manCards();
-module.exports = engCards();
-module.exports = intCards();
+module.exports = manCards;
+module.exports = engCards;
+module.exports = intCards;
+// module.exports = cards;
