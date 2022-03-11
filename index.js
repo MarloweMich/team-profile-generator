@@ -1,14 +1,9 @@
 const fs = require('fs');
-// const Employee = require("./lib/Employee");
 const Manager = require("./lib/Manager");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
-// const generateHTML = require('./utils/generateHTML')
-// const manCards = require('./utils/Cards')
-// const engCards = require('./utils/Cards')
-// const intCards = require('./utils/Cards')
-// const cards = require('./utils/Cards')
+
 
 //ARRAYS OF EMPLOYEES BY CATEGORY THAT EACH INDIVIDUAL ENTRY WILL BE PUSHED INTO
 const manArray = [];
@@ -90,7 +85,6 @@ async function generateEmployee() {
       data_1.email,
       data_2.officeNumber
     );
-    // console.log(man);
     manArray.push(man);
     return addAnother();
   }
@@ -103,7 +97,6 @@ async function generateEmployee() {
       data_1.email,
       data_3.github
     );
-    // console.log(eng);
     engArray.push(eng);
     return addAnother();
   }
@@ -111,7 +104,6 @@ async function generateEmployee() {
   async function intern() {
     const data_4 = await inquirer.prompt(InternQuestions);
     const int = new Intern(data_1.id, data_1.name, data_1.email, data_4.school);
-    // console.log(int);
     intArray.push(int);
     return addAnother();
   }
@@ -121,15 +113,10 @@ async function generateEmployee() {
     if (data_5.add === true) {
       return generateEmployee();
     } else {
-        // console.log(manArray, engArray, intArray);
         const mancard = manCards(manArray);
         const engcard = engCards(engArray);
         const intcard = intCards(intArray);
-        // manCards(manArray);
-        // engCards(engArray);
-        // intCards(intArray);
         cards.push(mancard, engcard, intcard)
-        // console.log(cards)
       return writeToFile(cards);
     }
   }
